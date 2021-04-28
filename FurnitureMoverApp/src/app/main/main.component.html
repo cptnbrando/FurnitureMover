@@ -1,0 +1,52 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <span class="navbar-brand">Houses</span>
+    </div>
+</nav>
+
+<div id="houseList">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Size (sq. ft.)</th>
+                <th scope="col">Potential Size (sq. ft.)</th>
+                <th scope="col">Number of Furniture</th>
+                <th scope="col">Update</th>
+                <th scope="col">Delete</th>
+            </tr>
+        </thead>
+        <tbody *ngIf="this.houses.length === 0;">
+            <tr>
+                <td>No houses found!</td>
+            </tr>
+        </tbody>
+        <tbody id="houseListTableBody" *ngFor='let house of houses'>
+            <tr>
+                <td>{{house.houseID}}</td>
+                <td (click)="showFurniture(house)" class="link">{{house.houseName}}</td>
+                <td>{{house.houseSize}}</td>
+                <td>{{house.houseSize / 2}}</td>
+                <td>{{house.myFurniture.length}}</td>
+                <td (click)="updateHouse(house)" class="link">o</td>
+                <td (click)="deleteHouse(house)" class="link">x</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div id="newGroceryList">
+    <h2>Make a new House</h2>
+    <form id="listForm" (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+            <label for="newHouseName" class="form-label">House Name</label>
+            <input type="text" [(ngModel)]='newHouseName' class="form-control" id="newHouseName" name="newHouseName" required>
+        </div>
+        <div class="mb-3">
+            <label for="newHouseSize" class="form-label">House Size</label>
+            <input type="number" [(ngModel)]='newHouseSize' class="form-control" id="newHouseSize" name="newHouseSize" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>

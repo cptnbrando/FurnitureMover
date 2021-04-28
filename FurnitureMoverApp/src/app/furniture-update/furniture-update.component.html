@@ -1,0 +1,32 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <span class="navbar-brand">Update Furniture {{furniture.furnitureID}} in House {{house.houseID}}</span>
+        <span class="form-inline my-2 my-lg-0" class="link"><a (click)="backToFurniture()">Back to Furniture</a></span>
+    </div>
+</nav>
+<div>
+    <li>
+        Furniture ID: {{furniture.furnitureID}}
+    </li>
+    <li>
+        Current Furniture Name: {{furniture.furnitureName}}
+    </li>
+    <li>
+        Current furniture Size: {{furniture.furnitureSize}}
+    </li>
+</div>
+
+<div id="updateFurnitureForm">
+    <h2>Update Furniture</h2>
+    <form id="listForm" (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+            <label for="newFurnitureName" class="form-label">Change Furniture Name</label>
+            <input type="text" [(ngModel)]='newFurnitureName' class="form-control" id="newFurnitureName" name="newFurnitureName">
+        </div>
+        <div class="mb-3">
+            <label for="newFurnitureSize" class="form-label">Change Furniture Size</label>
+            <input type="number" class="form-control" [(ngModel)]='newFurnitureSize' id="newFurnitureSize" name="newFurnitureSize">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>

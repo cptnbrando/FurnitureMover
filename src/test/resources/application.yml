@@ -1,0 +1,42 @@
+
+#this is a comment in yml
+
+server:
+  port: 9001
+
+spring:
+  datasource:
+    url: jdbc:h2:file:./myh2test/myh2file
+    password: sa
+    username: mypass
+    driverClassName: org.h2.Driver
+    data: classpath:./testing/testdata.sql
+    schema: classpath:./testing/schema.sql
+    initialize: true
+    initialization-mode: always
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    show-sql: true
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        temp:
+          use_jdbc_metadata_defaults: false
+        jdbc:
+          lob:
+            non_contextual_creation: true
+
+
+
+
+
+
+  #inside of a properties file you'd have to do this:
+  # spring.datasource.url = ...stuff
+  # spring.datasource.username= ...stuff
+  # spring.datasource.password= ...stuff
+  # and so on.....
+
+
+

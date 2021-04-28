@@ -1,0 +1,32 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <span class="navbar-brand">Update House {{house.houseID}}</span>
+        <span class="form-inline my-2 my-lg-0" class="link"><a routerLink='/'>Back to All Houses</a></span>
+    </div>
+</nav>
+<div>
+    <li>
+        Current House ID: {{house.houseID}}
+    </li>
+    <li>
+        Current House Name: {{house.houseName}}
+    </li>
+    <li>
+        Current House Size: {{house.houseSize}}
+    </li>
+</div>
+
+<div id="updateHouseForm">
+    <h2>Update House</h2>
+    <form id="listForm" (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+            <label for="newHouseName" class="form-label">Change House Name</label>
+            <input type="text" [(ngModel)]='newHouseName' class="form-control" id="newHouseName" name="newHouseName">
+        </div>
+        <div class="mb-3">
+            <label for="newHouseSize" class="form-label">Change House Size</label>
+            <input type="number" class="form-control" [(ngModel)]='newHouseSize' id="newHouseSize" name="newHouseSize">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>

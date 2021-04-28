@@ -1,0 +1,59 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <span class="navbar-brand">{{house.houseName}} Furniture</span>
+        <span class="navbar-brand">House Size: {{house.houseSize}}, Furniture Size: {{totalSize}}, Remaining: {{possibleSize - totalSize}}</span>
+        <span class="form-inline my-2 my-lg-0" class="link"><a routerLink='/'>Back to All Houses</a></span>
+    </div>
+</nav>
+
+<div id="furnitureList">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Size (sq. ft.)</th>
+                <th scope="col">Update</th>
+                <th scope="col">Delete</th>
+            </tr>
+        </thead>
+        <tbody *ngIf="this.furniture.length === 0;">
+            <tr>
+                <td>No furniture found!</td>
+            </tr>
+        </tbody>
+        <tbody id="houseListTableBody" *ngFor='let furn of furniture'>
+            <tr>
+                <td>{{furn.furnitureID}}</td>
+                <td>{{furn.furnitureName}}</td>
+                <td>{{furn.furnitureSize}}</td>
+                <td (click)="updateFurniture(house, furn)" class="link">o</td>
+                <td (click)="deleteFurniture(furn)" class="link">x</td>
+            </tr>
+        </tbody>
+        <tbody *ngIf="this.tooBig">
+            <tr>
+                <td></td>
+                <td>Furniture too large to add</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div id="newFurnitureList">
+    <h2>Add furniture</h2>
+    <form id="listForm" (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+            <label for="newFurnitureName" class="form-label">Furniture Name</label>
+            <input type="text" [(ngModel)]='newFurnitureName' class="form-control" id="newFurnitureName" name="newFurnitureName" required>
+        </div>
+        <div class="mb-3">
+            <label for="newFurnitureSize" class="form-label">Furniture Size</label>
+            <input type="number" class="form-control" [(ngModel)]='newFurnitureSize' id="newFurnitureSize" name="newFurnitureSize" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
